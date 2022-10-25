@@ -1,71 +1,130 @@
 body{
+    background-image: linear-gradient(to top right, #EB9FC0, #B83F8F, #2C2867);
     height:100vh;
-    overflow: hidden;
-    font-family: monospace;
-    background-image: linear-gradient(to top right, #212477, #492C66);
+    overflow:hidden;
 }
-.title{
+.btn{
+    display: block;
+    color:#fff;
+    margin-top:300px;
+    padding:5px 10px;
     text-align: center;
-    color:#eee;
-    padding:100px 50px 50px;
 }
-.title h3{
-    opacity: .5;
+.btn label{
+    background-color: #ffffff66;
+    display: inline-block;
+    margin:0 20px;
+    padding:20px;
 }
-#loading{
+.modal{
     width:300px;
-    height:300px;
-    background-color: #996DAA;
     margin:auto;
-    border-radius: 50%;
-    border:1px solid #bb92a866;
-    box-shadow: 0 0 50px #00000078;
-    position: relative;
-    cursor: pointer;
-    --loading-value: 0%;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transition-delay: 2s;
+    transform: translate(-50%, -50%) scale(0);
 }
-#loading::after{
-    position: absolute;
-    top:20px;
-    left:20px;
-    width:calc(100% - 40px);
-    height:calc(100% - 40px);
-    content:'';
-    border-radius: 50%;
-    background-image: conic-gradient(
-        #CCF2F4, #72F4F2 var(--loading-value), 
-        transparent var(--loading-value)
-    );
-    z-index: 1;
+.modal .header{
+    background-image: linear-gradient(to top left,
+        #C086E1, #E8ABC7);
+        min-height:200px;
+        border-radius: 30px;
+        position: relative;
+        padding:20px 20px 100px 20px;
+        opacity: 0;
+        transition: 0.5s;
+        transform: translate(0,70px);
 }
-#loading::before{
+.modal img{
     position: absolute;
-    top:-80px;
-    left:-80px;
-    width:calc(100% + 160px);
-    height:calc(100% + 160px);
-    content:'';
-    border-radius: 50%;
-    background-image: conic-gradient(
-        #C77CA3, #ff3def var(--loading-value), 
-        transparent var(--loading-value)
-    );
-    z-index: 1;
-    opacity: .5;
-    filter: blur(60px);
 }
-#value-show{
-    position: absolute;
-    top:40px;
-    left:40px;
-    width:calc(100% - 80px);
-    height:calc(100% - 80px);
-    border-radius: 50%;
-    background-image: radial-gradient(#9679B6, #845b97);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    color:#D6F2F3;
+.modal img:nth-child(1){
+    top:-30px;
+    width:90%;
+    left:5%;
+    opacity: 0;
+    transform: translate(0,70px);
+    transition: 0.7s;
+}
+.modal img:nth-child(2){
+    top:170px;
+    transform: rotate(80deg);
+    width:100px;
+    left:-50px;
+    opacity:0;
+    transition: 1s;
+
+}
+.modal img:nth-child(3){
+    transform: rotate(-80deg);
+    bottom:-90px;
+    width:100px;
+    right:-40px;
+    opacity:0;
+    transition: 1s;
+}
+.modal .content{
+    background-color: #E2F0EB4D;
+    padding:20px;
+    min-height: 100px;
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    color:#eee;
+    font-family: monospace;
+    transform: translate(0,70px);
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+}
+.modal .confirm{
+    text-align: center;
+    margin-top:30px;
+}
+.modal .content label,
+.modal .content button{
+    display: inline-block;
+    border:none;
+    padding:10px;
+    color:#fff;
+    margin: 0 10px;
+}
+.modal .content label{
+    background-color: #ffffff4D;
+}
+.modal .content button{
+    background-color: #986FEA;
+}
+.modal input[name="setingModal"]{
+    display: none;
+}
+.modal:has(input[name="setingModal"]:checked){
+    transition: 0s;
+    transform: translate(-50%,-50%) scale(1);
+}
+.modal:has(input[name="setingModal"]:checked) .header{
+    opacity: 1;
+    transform: translate(0,0);
+}
+.modal:has(input[name="setingModal"]:checked) .content{
+    transition-delay: 0s;
+    opacity: 1;
+    transform: translate(0,-70px);
+}
+.modal:has(input[name="setingModal"]:checked) .header img:nth-child(1){
+    opacity: 1;
+    transform: translate(0,0);
+    transition-delay: 0.3s;
+}
+.modal:has(input[name="setingModal"]:checked) .header img:nth-child(2){
+    opacity: 1;
+    transform: rotate(-20deg);
+    transition-delay: 0.5s;
+    top:-20px;
+}
+.modal:has(input[name="setingModal"]:checked) .header img:nth-child(3){
+    opacity: 1;
+    transform: rotate(20deg);
+    transition-delay: 0.5s;
+    bottom:20px;
 }
